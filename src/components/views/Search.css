@@ -1,0 +1,13 @@
+input.budget{
+    max-width: 150px;
+}
+.form-control {
+
+    height: calc(2.5em + .75rem + 2px)!important;
+}
+.error-alert{
+    width: 100%;
+    color: red;
+    text-align: center;
+    display: none;
+}
