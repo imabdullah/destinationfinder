@@ -1,40 +1,37 @@
 import React, { Component } from 'react'
 import Autosuggest from 'react-autosuggest';
 import axios from 'axios';
-import './Search.css';
+import '../views/Search.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import PropTypes from 'prop-types';
-
 
 function getPlaceValue(place) {
-    return place.PlaceName + " (" + place.PlaceId+")";
+    return place.PlaceName + " " + place.PlaceId;
 }
 
 function renderPlace(place) {
     return (
-        <span>{place.PlaceName} <span style={{fontSize:"80%"}}>({place.PlaceId})</span></span>
+        <span>{place.PlaceName} {place.PlaceId}</span>
     );
 }
 
-class Search extends Component {
-    
+class Test extends Component {
     constructor() {
         super();
+
         this.state = {
-            from: '',
+            value: '',
             to: '',
             places: [],
             budget: "",
             startDate: null,
-            endDate: null,
-            error:false
+            endDate: null
         };
     }
-    
+
     onChangeFrom = (event, { newValue, method }) => {
         this.setState({
-            from: newValue
+            value: newValue
         });
 
         ;
@@ -76,20 +73,17 @@ class Search extends Component {
 
     clearSuggestionPlaces = () => {
         this.setState({
-            places: []
+            suggestions: []
         });
     };
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
     onSubmit = (e) => {
         e.preventDefault();
-        this.setState({error : false});
         console.log(this.state)
         if (this.state.budget && this.state.to && this.state.from && this.state.startDate && this.state.endDate) {
-            console.log("All Set");
-            this.props.search(this.state);
+            console.log("All Set")
         } else {
-            this.setState({error : true});
-        
+
         }
     }
 
@@ -102,11 +96,12 @@ class Search extends Component {
 
 
     render() {
-        const { to, from, places } = this.state;
+        const { to, value, places } = this.state;
+
         const fromProps = {
             placeholder: "From",
             name: "from",
-            value: from,
+            value,
             onChange: this.onChangeFrom
         };
         const toProps = {
@@ -155,18 +150,16 @@ class Search extends Component {
                 <div className="form-group">
                     <button type="submit" className="btn-solid-lg page-scroll">Search</button>
                 </div>
-
-                <div className="error-alert" style={{display: this.state.error?"block":"none"}}>
+                <div className="error-alert">
                     All fields required!
                 </div>
             </form>
+
+
 
         );
     }
 }
 
-Search.propTypes = {
-    search: PropTypes.func.isRequired
-}
 
-export default Search
+export default Test
