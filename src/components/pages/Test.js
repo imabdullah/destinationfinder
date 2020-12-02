@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import Autosuggest from 'react-autosuggest';
 import axios from 'axios';
+import '../views/Search.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function getPlaceValue(place) {
-    return place.PlaceName+" "+place.PlaceId;
+    return place.PlaceName + " " + place.PlaceId;
 }
 
 function renderPlace(place) {
     return (
-    <span>{place.PlaceName} {place.PlaceId}</span>
+        <span>{place.PlaceName} {place.PlaceId}</span>
     );
 }
 
@@ -18,8 +21,11 @@ class Test extends Component {
 
         this.state = {
             value: '',
-            to:'',
-            places: []
+            to: '',
+            places: [],
+            budget: "",
+            startDate: null,
+            endDate: null
         };
     }
 
@@ -37,7 +43,7 @@ class Test extends Component {
     };
 
 
-    fetchSuggestionPlaces = (place ) => {
+    fetchSuggestionPlaces = (place) => {
         this.setState({ places: [] })
         place = place.value;
         if (place.length > 3) {
@@ -56,7 +62,7 @@ class Test extends Component {
                     }
 
                 })
-        }else{
+        } else {
             this.setState({
                 places: []
             });
@@ -70,6 +76,24 @@ class Test extends Component {
             suggestions: []
         });
     };
+    onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+    onSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state)
+        if (this.state.budget && this.state.to && this.state.from && this.state.startDate && this.state.endDate) {
+            console.log("All Set")
+        } else {
+
+        }
+    }
+
+    setDeparture = (date) => {
+        this.setState({ startDate: date, endDate: null })
+    }
+    setReturn = (date) => {
+        this.setState({ startDate: this.state.startDate, endDate: date })
+    }
+
 
     render() {
         const { to, value, places } = this.state;
@@ -88,26 +112,51 @@ class Test extends Component {
         };
 
         return (
-            <div>
-                <br />
-                <br /><br />
-                <Autosuggest
-                    suggestions={places}
-                    onSuggestionsFetchRequested={this.fetchSuggestionPlaces}
-                    onSuggestionsClearRequested={this.clearSuggestionPlaces}
-                    getSuggestionValue={getPlaceValue}
-                    renderSuggestion={renderPlace}
-                    inputProps={fromProps} />
 
-                    <br /><br />
-                <Autosuggest
-                    suggestions={places}
-                    onSuggestionsFetchRequested={this.fetchSuggestionPlaces}
-                    onSuggestionsClearRequested={this.clearSuggestionPlaces}
-                    getSuggestionValue={getPlaceValue}
-                    renderSuggestion={renderPlace}
-                    inputProps={toProps} />
-            </div>
+            <form onSubmit={this.onSubmit} className="form-inline">
+                <div className="form-group">
+                    <select className="form-control budget" placeholder="Select your Budget" name="budget" value={this.state.budget} onChange={this.onChange} >
+                        <option>Select your Budget&nbsp;&nbsp;</option>
+                        <option>$200 - $500</option>
+                        <option>$500 - $1000</option>
+                        <option>$1000 - $1500</option>
+                    </select>
+
+                </div>
+                <div className="form-group">
+                    <Autosuggest
+                        suggestions={places}
+                        onSuggestionsFetchRequested={this.fetchSuggestionPlaces}
+                        onSuggestionsClearRequested={this.clearSuggestionPlaces}
+                        getSuggestionValue={getPlaceValue}
+                        renderSuggestion={renderPlace}
+                        inputProps={fromProps} />
+                </div>
+                <div className="form-group">
+                    <Autosuggest
+                        suggestions={places}
+                        onSuggestionsFetchRequested={this.fetchSuggestionPlaces}
+                        onSuggestionsClearRequested={this.clearSuggestionPlaces}
+                        getSuggestionValue={getPlaceValue}
+                        renderSuggestion={renderPlace}
+                        inputProps={toProps} />
+                </div>
+                <div className="form-group">
+                    <DatePicker className="form-control" selected={this.state.startDate} onChange={date => this.setDeparture(date)} minDate={new Date()} placeholderText="Departure Date" />
+                </div>
+                <div className="form-group">
+                    <DatePicker className="form-control" selected={this.state.endDate} minDate={this.state.startDate} onChange={date => this.setReturn(date)} placeholderText="Return Date" />
+                </div>
+                <div className="form-group">
+                    <button type="submit" className="btn-solid-lg page-scroll">Search</button>
+                </div>
+                <div className="error-alert">
+                    All fields required!
+                </div>
+            </form>
+
+
+
         );
     }
 }
