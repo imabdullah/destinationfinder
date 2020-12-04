@@ -117,9 +117,10 @@ class Search extends Component {
                 <div className="form-group">
                     <select className="form-control budget" placeholder="Select your Budget" name="budget" value={this.state.budget} onChange={this.onChange} >
                         <option>Select your Budget&nbsp;&nbsp;</option>
-                        <option>$200 - $500</option>
-                        <option>$500 - $1000</option>
-                        <option>$1000 - $1500</option>
+                        <option value="300">upto 300</option>
+                        <option value="400">upto 400</option>
+                        <option value="500">uptp 500</option>
+                        <option value="600">uptp 600</option>
                     </select>
 
                 </div>

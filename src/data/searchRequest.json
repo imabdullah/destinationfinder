@@ -1,6 +1,6 @@
 {
-    "Origin": "KHI",
-    "OriginCity": "Karachi",
+    "Origin": "DXB",
+    "OriginCity": "Dubai",
     "Destination": "ISB",
     "DestinationCity": "Islamabad Intl",
     "From": "20201208",
@@ -46,3 +46,7 @@
     "NumInfantAge": [],
     "totalPassangers": 1
 }
+
+
+
+
