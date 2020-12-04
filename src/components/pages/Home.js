@@ -11,26 +11,27 @@ export class Home extends Component {
         },
         origin: "",
         destination: "",
-        budget:100000000
+        budget: 100000000
     }
     search = (request) => {
         var postBody = searchRequest;
         this.setState({
+            response: [],
             origin: request.from.substring(request.from.indexOf("(") + 1, request.from.indexOf(")")),
             destination: request.to.substring(request.to.indexOf("(") + 1, request.to.indexOf(")")),
             budget: request.budget
         })
 
 
-         postBody.Origin = request.from.substring(request.from.indexOf("(") + 1, request.from.indexOf(")"));
-         postBody.Destination =  request.to.substring(request.to.indexOf("(") + 1, request.to.indexOf(")"));
-         postBody.OriginCity = request.from.substring(0, request.from.indexOf("(") - 1);
-         postBody.DestinationCity = request.to.substring(0, request.to.indexOf("(") - 1);
-         var date = request.startDate.toLocaleDateString('en-US').split("/");
-         postBody.From = date[2]+""+date[0]+""+date[1];
-         date = request.endDate.toLocaleDateString('en-US').split("/");
-        postBody.To = date[2]+""+date[0]+""+date[1];
-  
+        postBody.Origin = request.from.substring(request.from.indexOf("(") + 1, request.from.indexOf(")"));
+        postBody.Destination = request.to.substring(request.to.indexOf("(") + 1, request.to.indexOf(")"));
+        postBody.OriginCity = request.from.substring(0, request.from.indexOf("(") - 1);
+        postBody.DestinationCity = request.to.substring(0, request.to.indexOf("(") - 1);
+        var date = request.startDate.toLocaleDateString('en-US').split("/");
+        postBody.From = date[2] + "" + ('0' + date[0]).slice(-2) + "" +  ('0' + date[0]).slice(-2);
+        date = request.endDate.toLocaleDateString('en-US').split("/");
+        postBody.To = date[2] + "" + ('0' + date[0]).slice(-2) + "" +  ('0' + date[0]).slice(-2);
+        
         axios.post('https://cors-anywhere.herokuapp.com/https://demo.travelportuniversalapi.com/Api/Air/GetLowFareSearch', postBody)
             .then(res => {
                 this.setState({ response: res.data });
@@ -65,7 +66,7 @@ export class Home extends Component {
                                     <h2>Available Flights</h2>
                                     <div className="section-title">That Suits Your Needs</div>
 
-                                    <Flights flights={this.state.response} origin={this.state.origin} destination={this.state.destination} budget={this.state.budget}/>
+                                    <Flights flights={this.state.response} origin={this.state.origin} destination={this.state.destination} budget={this.state.budget} />
 
                                 </div>
                             </div>
