@@ -51,7 +51,7 @@ class Search extends Component {
         place = place.value;
         if (place.length > 3) {
             
-            axios.get('https://demo.travelportuniversalapi.com/Api//TravelData/GetLocationByName?name=' + place)
+            axios.get('https://cors-anywhere.herokuapp.com/https://demo.travelportuniversalapi.com/Api//TravelData/GetLocationByName?name=' + place)
                 .then(res => {
                     console.log(res.data.$values);
                     if (res.data != null && '$values' in res.data) {
@@ -119,8 +119,9 @@ class Search extends Component {
                         <option>Select your Budget&nbsp;&nbsp;</option>
                         <option value="300">upto 300</option>
                         <option value="400">upto 400</option>
-                        <option value="500">uptp 500</option>
-                        <option value="600">uptp 600</option>
+                        <option value="500">upto 500</option>
+                        <option value="1000">upto 1000</option>
+                        <option value="100000000">1000+</option>
                     </select>
 
                 </div>

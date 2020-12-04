@@ -19,12 +19,6 @@ export default function Nav() {
                     <Link className="nav-link page-scroll" to="/about">About</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link page-scroll" to="/account">Sign in</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link page-scroll" to="/account">Sign up</Link>
-                </li>
-                <li className="nav-item">
                     <Link className="nav-link page-scroll" to="/contact">Contact</Link>
                 </li>
                 

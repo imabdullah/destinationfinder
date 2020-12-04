@@ -2308,7 +2308,9 @@ a:hover.back-to-top {
 	}
 	/* end of description */
 
-
+	#about{
+		background-color: black;
+	}
 	/* Services */
 	.cards-2 .card {
 		/*max-width: 20.875rem;*/
