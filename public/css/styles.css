@@ -912,7 +912,7 @@ input[type='checkbox'] {
 }
 
 .cards-2 .card {
-	margin-bottom: 5.625rem;
+	margin-bottom: 1.025rem;
 	border: none;
 	background-color: transparent;
 }
@@ -2115,15 +2115,15 @@ a:hover.back-to-top {
 
 	/* Services */
 	.cards-2 .card {
-		max-width: 18.25rem;
-		display: inline-block;
+		/*max-width: 18.25rem;*/
+		/* display: inline-block; */
 		vertical-align: top;
 	}
 
-	.cards-2 .col-lg-12 div.card:nth-child(3n+2) {
+	/* .cards-2 .col-lg-12 div.card:nth-child(3n+2) {
 		margin-right: 1.25rem;
 		margin-left: 1.25rem;
-	}
+	} */
 	/* end of services */
 
 
@@ -2311,17 +2311,17 @@ a:hover.back-to-top {
 
 	/* Services */
 	.cards-2 .card {
-		max-width: 20.875rem;
+		/*max-width: 20.875rem;*/
 	}
 
 	.cards-2 .card-body {
-		padding: 2.25rem 2.5rem 2.125rem 2.5rem;
+		padding: 1.25rem 1.5rem 0rem 1.5rem;
 	}
 
-	.cards-2 .col-lg-12 div.card:nth-child(3n+2) {
+	/* .cards-2 .col-lg-12 div.card:nth-child(3n+2) {
 		margin-right: 3rem;
 		margin-left: 3rem;
-	}
+	} */
 	/* end of services */
 
 

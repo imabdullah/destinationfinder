@@ -1,0 +1,52 @@
+{
+    "Origin": "DXB",
+    "OriginCity": "Dubai",
+    "Destination": "ISB",
+    "DestinationCity": "Islamabad Intl",
+    "From": "20201208",
+    "To": "20201229",
+    "Adults": "1",
+    "Childrens": "0",
+    "ChildrenAge": [],
+    "Infants": "0",
+    "InfantAge": [],
+    
+    "CheckFlights": true,
+    "FlightsFilter": {
+        "Gds": true,
+        "LowCostCarrier": false,
+       
+        "SplitTicketingValue": "",
+       
+        "TypeExplore": "Zone",
+        "RadioFlexValue": "",
+        "FlexExplorer": "1",
+        "FlexibleAirport": "2",
+        "FlexRadius": "3",
+        "FlexibleDates": "4",
+        "FlexibleWeekends": "5",
+        "AirAdvancedOptions": {
+            "Category": "0",
+            "MaxJourneyTime": "",
+            "AlternateCurrency": "USD",
+            "AccountCode": "",
+            "AccountSupplier": "",
+            "Stops": "",
+            "MaxConnections": "any",
+            "MaxStops": "nonstop",
+            "ProhibitedCarriersList": "",
+            "PreferedCarriersList": "",
+            "PermittedCarriersList": "",
+            "CarriersOption": true,
+            "AccountCodes": "-"
+        }
+    },
+    
+    "NumChildrenAge": [],
+    "NumInfantAge": [],
+    "totalPassangers": 1
+}
+
+
+
+

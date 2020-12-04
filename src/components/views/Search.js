@@ -8,12 +8,12 @@ import PropTypes from 'prop-types';
 
 
 function getPlaceValue(place) {
-    return place.PlaceName + " (" + place.PlaceId+")";
+    return place.Name + " (" + place.Code+")";
 }
 
 function renderPlace(place) {
     return (
-        <span>{place.PlaceName} <span style={{fontSize:"80%"}}>({place.PlaceId})</span></span>
+        <span>{place.Name} <span style={{fontSize:"80%"}}>({place.Code})</span></span>
     );
 }
 
@@ -50,18 +50,13 @@ class Search extends Component {
         this.setState({ places: [] })
         place = place.value;
         if (place.length > 3) {
-            var config = {
-                headers: {
-                    'x-rapidapi-host': 'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
-                    'x-rapidapi-key': '1a12058fafmsh7466804d7f6c46cp1e707djsn444d6b07a5de'
-                }
-            };
-            axios.get('https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=' + place, config)
+            
+            axios.get('https://demo.travelportuniversalapi.com/Api//TravelData/GetLocationByName?name=' + place)
                 .then(res => {
-                    console.log(res.data.Places);
-                    if (res.data != null && 'Places' in res.data) {
+                    console.log(res.data.$values);
+                    if (res.data != null && '$values' in res.data) {
                         console.log("Ok");
-                        this.setState({ places: res.data.Places });
+                        this.setState({ places: res.data.$values });
                     }
 
                 })
@@ -122,9 +117,10 @@ class Search extends Component {
                 <div className="form-group">
                     <select className="form-control budget" placeholder="Select your Budget" name="budget" value={this.state.budget} onChange={this.onChange} >
                         <option>Select your Budget&nbsp;&nbsp;</option>
-                        <option>$200 - $500</option>
-                        <option>$500 - $1000</option>
-                        <option>$1000 - $1500</option>
+                        <option value="300">upto 300</option>
+                        <option value="400">upto 400</option>
+                        <option value="500">uptp 500</option>
+                        <option value="600">uptp 600</option>
                     </select>
 
                 </div>
