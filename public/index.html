@@ -10,62 +10,44 @@
   <link rel="apple-touch-icon" href="logo192.png" />
 
   <link rel="manifest" href="manifest.json" />
-<!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+  <!-- Scripts for deployment on firebase-->
+  <script defer src="/__/firebase/8.1.2/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/8.1.2/firebase-auth.js"></script>
+  <script defer src="/__/firebase/8.1.2/firebase-database.js"></script>
+  <script defer src="/__/firebase/8.1.2/firebase-firestore.js"></script>
+  <script defer src="/__/firebase/8.1.2/firebase-functions.js"></script>
+  <script defer src="/__/firebase/8.1.2/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/8.1.2/firebase-storage.js"></script>
+  <script defer src="/__/firebase/8.1.2/firebase-analytics.js"></script>
+  <script defer src="/__/firebase/8.1.2/firebase-remote-config.js"></script>
+  <script defer src="/__/firebase/8.1.2/firebase-performance.js"></script>
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-  <!-- Styles -->
-
-   <!-- update the version number as needed -->
-   <script defer src="/__/firebase/8.1.2/firebase-app.js"></script>
-   <!-- include only the Firebase features as you need -->
-   <script defer src="/__/firebase/8.1.2/firebase-auth.js"></script>
-   <script defer src="/__/firebase/8.1.2/firebase-database.js"></script>
-   <script defer src="/__/firebase/8.1.2/firebase-firestore.js"></script>
-   <script defer src="/__/firebase/8.1.2/firebase-functions.js"></script>
-   <script defer src="/__/firebase/8.1.2/firebase-messaging.js"></script>
-   <script defer src="/__/firebase/8.1.2/firebase-storage.js"></script>
-   <script defer src="/__/firebase/8.1.2/firebase-analytics.js"></script>
-   <script defer src="/__/firebase/8.1.2/firebase-remote-config.js"></script>
-   <script defer src="/__/firebase/8.1.2/firebase-performance.js"></script>
-   <!-- 
-     initialize the SDK after all desired features are loaded, set useEmulator to false
-     to avoid connecting the SDK to running emulators.
-   -->
-   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-
+  <!--  Google fonts api-->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext"
     rel="stylesheet">
 
+  <!-- Styling-->
   <link href="css/fontawesome-all.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 
-  
-  
+
+
   <title>React App</title>
 </head>
 
 <body data-spy="scroll" data-target=".fixed-top">
   <noscript>You need to enable JavaScript to run this app.</noscript>
 
-   <!-- Preloader -->
+  <!-- Main div to render componenets -->
   <div id="root">
-    
+
   </div>
 
-  <!--
-  <script src="%PUBLIC_URL%/js/jquery.min.js"></script> 
-  <script src="%PUBLIC_URL%/js/scripts.js"></script>
--->
 </body>
 
 </html>

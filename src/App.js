@@ -8,6 +8,7 @@ import Search from './components/views/Search';
 
 function App() {
   return (
+    /** Routers to route different components**/
     <Router>
       <div className="App">
         <Nav />
