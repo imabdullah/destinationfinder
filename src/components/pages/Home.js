@@ -5,6 +5,7 @@ import searchRequest from '../../data/searchRequest.json';
 import Flights from '../views/Flights';
 
 export class Home extends Component {
+    //Initial state of input and response
     state = {
         response: {
 
@@ -13,8 +14,10 @@ export class Home extends Component {
         destination: "",
         budget: 100000000
     }
+    /** This function calls on search with input request  **/
     search = (request) => {
         var postBody = searchRequest;
+        //Updating state 
         this.setState({
             response: [],
             origin: request.from.substring(request.from.indexOf("(") + 1, request.from.indexOf(")")),
@@ -22,16 +25,17 @@ export class Home extends Component {
             budget: request.budget
         })
 
-
+        //setting post body
         postBody.Origin = request.from.substring(request.from.indexOf("(") + 1, request.from.indexOf(")"));
         postBody.Destination = request.to.substring(request.to.indexOf("(") + 1, request.to.indexOf(")"));
         postBody.OriginCity = request.from.substring(0, request.from.indexOf("(") - 1);
         postBody.DestinationCity = request.to.substring(0, request.to.indexOf("(") - 1);
         var date = request.startDate.toLocaleDateString('en-US').split("/");
-        postBody.From = date[2] + "" + ('0' + date[0]).slice(-2) + "" +  ('0' + date[0]).slice(-2);
+        postBody.From = date[2] + "" + ('0' + date[0]).slice(-2) + "" + ('0' + date[0]).slice(-2);
         date = request.endDate.toLocaleDateString('en-US').split("/");
-        postBody.To = date[2] + "" + ('0' + date[0]).slice(-2) + "" +  ('0' + date[0]).slice(-2);
-        
+        postBody.To = date[2] + "" + ('0' + date[0]).slice(-2) + "" + ('0' + date[0]).slice(-2);
+
+        //Post request to third API to fetch result 
         axios.post('https://cors-anywhere.herokuapp.com/https://demo.travelportuniversalapi.com/Api/Air/GetLowFareSearch', postBody)
             .then(res => {
                 this.setState({ response: res.data });
@@ -39,6 +43,7 @@ export class Home extends Component {
     }
     render() {
         return (
+            /** Render header with search form and result div**/
             <React.Fragment>
                 <header id="header" className="header">
                     <div className="header-content">
@@ -48,6 +53,7 @@ export class Home extends Component {
                                     <div className="text-container">
                                         <h1>Explore <span id="">Your Desired Destination</span></h1>
                                         <p className="p-heading p-large">Find a great places to fly to</p>
+                                        
                                         <Search search={this.search} />
 
                                     </div>

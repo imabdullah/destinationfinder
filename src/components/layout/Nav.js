@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 export default function Nav() {
     return (
+        /** Top nav bar with menu items**/
         <nav className="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
         
         <Link className="navbar-brand logo-image" to="/"><img src="images/logo.svg" alt="alternative"/></Link>

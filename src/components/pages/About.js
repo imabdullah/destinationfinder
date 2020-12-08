@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 class About extends Component {
     render() {
+        /** About text page details here**/
         return (
             <div id="about" className="counter">
                 <div className="container">

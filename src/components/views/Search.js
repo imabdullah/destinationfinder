@@ -6,19 +6,22 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import PropTypes from 'prop-types';
 
-
+/** Get place name and value */
 function getPlaceValue(place) {
-    return place.Name + " (" + place.Code+")";
+    return place.Name + " (" + place.Code + ")";
 }
 
+/** Render avaliable places*/
 function renderPlace(place) {
     return (
-        <span>{place.Name} <span style={{fontSize:"80%"}}>({place.Code})</span></span>
+        <span>{place.Name} <span style={{ fontSize: "80%" }}>({place.Code})</span></span>
     );
 }
 
 class Search extends Component {
-    
+    /**
+     * Intial state of search 
+     */
     constructor() {
         super();
         this.state = {
@@ -28,10 +31,12 @@ class Search extends Component {
             budget: "",
             startDate: null,
             endDate: null,
-            error:false
+            error: false
         };
     }
-    
+    /**
+     * On change input
+     */
     onChangeFrom = (event, { newValue, method }) => {
         this.setState({
             from: newValue
@@ -45,12 +50,15 @@ class Search extends Component {
         });
     };
 
-
+    /**
+     * 
+     * @param {place_name} place 
+     */
     fetchSuggestionPlaces = (place) => {
         this.setState({ places: [] })
         place = place.value;
         if (place.length > 3) {
-            
+            //Get request to fetch matching places
             axios.get('https://cors-anywhere.herokuapp.com/https://demo.travelportuniversalapi.com/Api//TravelData/GetLocationByName?name=' + place)
                 .then(res => {
                     console.log(res.data.$values);
@@ -68,29 +76,41 @@ class Search extends Component {
 
 
     }
-
+    /**
+     * clearing suggestions
+     */
     clearSuggestionPlaces = () => {
         this.setState({
             places: []
         });
     };
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
+    /**
+     * on submit form
+     */
     onSubmit = (e) => {
         e.preventDefault();
-        this.setState({error : false});
+        this.setState({ error: false });
         console.log(this.state)
         if (this.state.budget && this.state.to && this.state.from && this.state.startDate && this.state.endDate) {
             console.log("All Set");
             this.props.search(this.state);
         } else {
-            this.setState({error : true});
-        
+            this.setState({ error: true });
+
         }
     }
 
+    /**
+     * sets the departure date
+     */
     setDeparture = (date) => {
         this.setState({ startDate: date, endDate: null })
     }
+    /**
+     * sets the return date
+     */
     setReturn = (date) => {
         this.setState({ startDate: this.state.startDate, endDate: date })
     }
@@ -112,7 +132,7 @@ class Search extends Component {
         };
 
         return (
-
+            /**Renders the form */
             <form onSubmit={this.onSubmit} className="form-inline">
                 <div className="form-group">
                     <select className="form-control budget" placeholder="Select your Budget" name="budget" value={this.state.budget} onChange={this.onChange} >
@@ -153,7 +173,7 @@ class Search extends Component {
                     <button type="submit" className="btn-solid-lg page-scroll">Search</button>
                 </div>
 
-                <div className="error-alert" style={{display: this.state.error?"block":"none"}}>
+                <div className="error-alert" style={{ display: this.state.error ? "block" : "none" }}>
                     All fields required!
                 </div>
             </form>

@@ -12,15 +12,7 @@ export class Flights extends Component {
 
 
     render() {
-
-        // var flights = this.props.flights.FlightDetailsList.$values;
-        // var fares = this.props.flights.FareInfoList.$values;
-
-        // var directDepartFlights = flights.filter(flight => flight.Origin === this.props.origin && flight.Destination === this.props.destination);
-        // var directArrivalFlights = flights.filter(flight => flight.Origin === this.props.destination && flight.Destination === this.props.origin);
-
-        // var flight = new Object();
-        // 
+        //renders on result: Avaliable flights
         var f = new Object();
         var newFlights = [];
 
@@ -38,15 +30,13 @@ export class Flights extends Component {
         return (
             <div className="row">
                 <div className="col-lg-12">
+                    
                     {AirPricePointList.length>0?
                         /**Flights avaliable */
                         carriers.map((carrier) => (
                             carrier.AirPricePointGroupByPriceList.$values.map(carrierOption => (
                                 <div>
-                                    <Brands careerName={carrier.PlatingCarrier} carrierOption={carrierOption} />
-    
-    
-    
+                                    <Brands careerName={carrier.PlatingCarrier} carrierOption={carrierOption} />    
                                     {AirPricePointList.map(pointList => (
                                         pointList.AirPricingInfoList.$values.map(pricingList => (
                                             pricingList.FlightOptionList.$values.map(flightOption => (
